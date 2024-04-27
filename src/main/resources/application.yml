@@ -1,0 +1,34 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: SoapDataService  # Name of the Spring application
+  datasource:
+    url: jdbc:h2:mem:testdb  # URL of the H2 in-memory database
+    driverClassName: org.h2.Driver  # JDBC driver class
+    username: sa  # Database username
+    password: password  # Database password
+  jpa:
+    defer-datasource-initialization: true  # Whether to defer datasource initialization
+    database-platform: org.hibernate.dialect.H2Dialect  # Hibernate database dialect
+    hibernate:
+      ddl-auto: create  # Hibernate DDL auto setting
+  h2:
+    console:
+      enabled: true  # Whether to enable H2 console
+      path: /h2-console  # Path for accessing H2 console
+      settings:
+        trace: false  # Whether to enable trace mode in H2 console
+        web-allow-others: true  # Whether to allow other computers to connect to H2 console
+logging:
+  level:
+    root: INFO  # Root logging level
+
+webservice:
+  name: XDataService  # Name of the web service
+  context:
+    root: webservice  # Root context path for the web service
+  read:
+    timeout:
+      ms: 1000  # Delay in milliseconds for web service reading (for testing) , set 0 to disable

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="8ab8434e-98dc-4d94-946a-471f4a0fed7e" activeEnvironment="Default" name="XDataWebservice" resourceRoot="" soapui-version="5.7.2" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="97178c19-88a6-4827-a393-79d05c70c980" wsaVersion="NONE" name="XDataPortSoap11" type="wsdl" bindingName="{http://eugen.cc/spring-boot-soap-xdata}XDataPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8081/webservice/XDataWebservice.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8081/webservice/XDataWebservice.wsdl"><con:part><con:url>http://localhost:8081/webservice/XDataWebservice.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://eugen.cc/spring-boot-soap-xdata" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://eugen.cc/spring-boot-soap-xdata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://eugen.cc/spring-boot-soap-xdata">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://eugen.cc/spring-boot-soap-xdata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getXDataRequest">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="getXDataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="XData" type="tns:XData"/>
+            <xs:element name="responseTime" type="xs:dateTime"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getXDataByIdRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getXDataByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="XData" type="tns:XData"/>
+            <xs:element name="responseTime" type="xs:dateTime"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getXDataByMetadataRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="XMetadata" type="tns:MetadataType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getXDataByMetadataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="XData" type="tns:XData"/>
+            <xs:element name="responseTime" type="xs:dateTime"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="XData">
+        <xs:sequence>
+          <xs:element name="id" type="xs:long"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="XMetadata" type="tns:MetadataType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MetadataType">
+        <xs:sequence>
+          <xs:element name="key" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="XMetadata">
+        <xs:sequence>
+          <xs:element name="id" type="xs:long"/>
+          <xs:element maxOccurs="1" minOccurs="1" name="xmetadata" type="tns:MetadataType"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getXDataByMetadataResponse">
+    <wsdl:part element="tns:getXDataByMetadataResponse" name="getXDataByMetadataResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getXDataRequest">
+    <wsdl:part element="tns:getXDataRequest" name="getXDataRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getXDataResponse">
+    <wsdl:part element="tns:getXDataResponse" name="getXDataResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getXDataByIdRequest">
+    <wsdl:part element="tns:getXDataByIdRequest" name="getXDataByIdRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getXDataByMetadataRequest">
+    <wsdl:part element="tns:getXDataByMetadataRequest" name="getXDataByMetadataRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getXDataByIdResponse">
+    <wsdl:part element="tns:getXDataByIdResponse" name="getXDataByIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="XDataPort">
+    <wsdl:operation name="getXDataByMetadata">
+      <wsdl:input message="tns:getXDataByMetadataRequest" name="getXDataByMetadataRequest"></wsdl:input>
+      <wsdl:output message="tns:getXDataByMetadataResponse" name="getXDataByMetadataResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getXData">
+      <wsdl:input message="tns:getXDataRequest" name="getXDataRequest"></wsdl:input>
+      <wsdl:output message="tns:getXDataResponse" name="getXDataResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getXDataById">
+      <wsdl:input message="tns:getXDataByIdRequest" name="getXDataByIdRequest"></wsdl:input>
+      <wsdl:output message="tns:getXDataByIdResponse" name="getXDataByIdResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="XDataPortSoap11" type="tns:XDataPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getXDataByMetadata">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getXDataByMetadataRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getXDataByMetadataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getXData">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getXDataRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getXDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getXDataById">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getXDataByIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getXDataByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="XDataPortService">
+    <wsdl:port binding="tns:XDataPortSoap11" name="XDataPortSoap11">
+      <soap:address location="http://localhost:8081/webservice"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8081/webservice</con:endpoint></con:endpoints><con:operation id="9061b0e9-9b62-4501-af34-516eba3e59b9" isOneWay="false" action="" name="getXData" bindingOperationName="getXData" type="Request-Response" outputName="getXDataResponse" inputName="getXDataRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="31778ffe-7342-42f5-bc1e-9e71b2ac1beb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/webservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spr="http://eugen.cc/spring-boot-soap-xdata">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spr:getXDataRequest/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://eugen.cc/spring-boot-soap-xdata/XDataPort/getXDataRequest"/></con:call></con:operation><con:operation id="cf54bf0c-f6f0-4a01-b430-12a394547be4" isOneWay="false" action="" name="getXDataById" bindingOperationName="getXDataById" type="Request-Response" outputName="getXDataByIdResponse" inputName="getXDataByIdRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f826e57a-cc09-4a05-9f8e-eea0936cefbc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/webservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spr="http://eugen.cc/spring-boot-soap-xdata">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spr:getXDataByIdRequest>
+         <spr:id>?</spr:id>
+      </spr:getXDataByIdRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://eugen.cc/spring-boot-soap-xdata/XDataPort/getXDataByIdRequest"/></con:call></con:operation><con:operation id="d0e8c83c-c071-4eb5-ab54-e2f9fe218c18" isOneWay="false" action="" name="getXDataByMetadata" bindingOperationName="getXDataByMetadata" type="Request-Response" outputName="getXDataByMetadataResponse" inputName="getXDataByMetadataRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0ae3f225-8e29-4be5-af22-dca302f1d246" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/webservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spr="http://eugen.cc/spring-boot-soap-xdata">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spr:getXDataByMetadataRequest>
+         <spr:XMetadata>
+            <spr:key>?</spr:key>
+            <spr:value>?</spr:value>
+         </spr:XMetadata>
+      </spr:getXDataByMetadataRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://eugen.cc/spring-boot-soap-xdata/XDataPort/getXDataByMetadataRequest"/></con:call></con:operation></con:interface><con:testSuite id="9fa45d9e-a852-43d7-a6fd-ae5f55cb3ba5" name="XDataWebservice"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="34bb2556-d4db-4321-9abe-eee999c207bb" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getXData TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="fc6d8fb0-a5b6-4e26-a897-06d40e705514" name="getXData"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>XDataPortSoap11</con:interface><con:operation>getXData</con:operation><con:request name="getXData" id="05918303-1464-4618-9ddf-6821964df99a"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/webservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spr="http://eugen.cc/spring-boot-soap-xdata">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spr:getXDataRequest/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://eugen.cc/spring-boot-soap-xdata/XDataPort/getXDataRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="6506d7f7-ff88-489a-8d53-b5d39c0f2b61" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getXDataById TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="427114cc-869f-4fab-a508-05472162270b" name="getXDataById"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>XDataPortSoap11</con:interface><con:operation>getXDataById</con:operation><con:request name="getXDataById" id="5cfef5b1-7c1e-4e3f-b1f3-bcfd9ec32c31"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/webservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spr="http://eugen.cc/spring-boot-soap-xdata">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spr:getXDataByIdRequest>
+         <spr:id>42</spr:id>
+      </spr:getXDataByIdRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://eugen.cc/spring-boot-soap-xdata/XDataPort/getXDataByIdRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="62d9124a-5987-4648-91b3-21e00e1d9467" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getXDataByMetadata TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="711e0246-a647-4c48-9c18-5ac11eddf872" name="getXDataByMetadata"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>XDataPortSoap11</con:interface><con:operation>getXDataByMetadata</con:operation><con:request name="getXDataByMetadata" id="c6b360fc-3d18-429e-93c1-d7a68937f307"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/webservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spr="http://eugen.cc/spring-boot-soap-xdata">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spr:getXDataByMetadataRequest>
+         <spr:XMetadata>
+            <spr:key>randomNumber</spr:key>
+            <spr:value>42</spr:value>
+         </spr:XMetadata>
+      </spr:getXDataByMetadataRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://eugen.cc/spring-boot-soap-xdata/XDataPort/getXDataByMetadataRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
